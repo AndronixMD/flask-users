@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% set current_url = '/' %}
+{% set current_url = '/create' %}
 
 {% block content %}
   <main class='container'>
     <div class='columns is-variable is-6'>
       {% include "partials/_menu.html" %}
       <section class='column'>
-        <div class='columns is-multiline'>
+        {# <div class='columns is-multiline'>
           {% for user in users %}
             <div class='column is-4'>
               <div class='box'>
@@ -44,7 +44,7 @@
               </div>
             </div>
           {% endfor %}
-        </div>
+        </div> #}
       </section>
     </div>
   </main>

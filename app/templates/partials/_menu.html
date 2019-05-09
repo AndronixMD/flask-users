@@ -1,0 +1,13 @@
+<aside class='menu column is-3'>
+  <p class='menu-label'>
+    Меню
+  </p>
+  <ul class='menu-list'>
+    <li>
+      <a href='{{ url_for("index") }}' class='{{ "is-active" if current_url == "/" }}'>Список</a>
+    </li>
+    <li>
+      <a href='{{ url_for("create") }}' class='{{ "is-active" if current_url == "/create" }}'>Создать</a>
+    </li>
+  </ul>
+</aside>
