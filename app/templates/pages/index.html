@@ -1,7 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class='container'>
-    1231313
-  </div>
+  <main class='container'>
+    <div class='columns is-variable is-6'>
+      <aside class='menu column is-3'>
+        <p class='menu-label'>
+          Меню
+        </p>
+        <ul class='menu-list'>
+          <li>
+            <a class='is-active'>Список</a>
+          </li>
+          <li>
+            <a>Создать</a>
+          </li>
+        </ul>
+      </aside>
+      <section class='column'>
+        <div class='columns is-multiline'>
+          {% for user in users %}
+            <div class='column is-4'>
+              <div class='box'>
+                {% if user.admin_id is not none %}
+                  <p>
+                    Роль - Админ
+                  </p>
+                  <p>
+                    Имя - {{ user.name }}
+                  </p>
+                  <p>
+                    Email -{{ user.email }}
+                  </p>
+                {% elif user.teacher_id is not none %}
+                  <p>
+                    Роль - Учитель
+                  </p>
+                    <p>
+                    Имя - {{ user.name }}
+                  </p>
+                  <p>
+                    Email -{{ user.email }}
+                  </p>
+                {% elif user.student_id is not none %}
+                  <p>
+                    Роль - Студент
+                  </p>
+                    <p>
+                    Имя - {{ user.name }}
+                  </p>
+                  <p>
+                    Адрес - {{ user.address }}
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </main>
 {% endblock %}
