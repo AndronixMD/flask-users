@@ -15,7 +15,7 @@ def index():
     elif current_user.teacher_id is not None:
         users = User.query.filter(
             User.id != current_user.id,
-            User.student_id == User.id
+            User.student_id == current_user.id
         ).all()
 
     return render_template('pages/index.html', users=users)

@@ -5,10 +5,9 @@ from wtforms.validators import DataRequired, Email, NumberRange
 
 class StudentForm(FlaskForm):
     name = StringField(
-        'Email',
+        'Имя',
         validators=[
-            DataRequired(message='Обязательное поле!'),
-            Email(message='Неправильный Email адрес!')
+            DataRequired(message='Обязательное поле!')
         ])
     age = DecimalField(
         'Возраст',
@@ -18,7 +17,7 @@ class StudentForm(FlaskForm):
                         message='Возраст должен быть больше 0 и меньше 121!')
         ])
     address = StringField(
-        'Пароль',
+        'Адрес',
         validators=[
             DataRequired(message='Обязательное поле!')
         ])

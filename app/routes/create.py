@@ -37,13 +37,11 @@ def create():
             user = User(
                 name=form.name.data,
                 address=form.address.data,
-                age=form.age.data,
+                age=int(form.age.data),
                 student_id=current_user.id
             )
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('create'))
-
-    print(form.errors)
 
     return render_template('pages/create.html', form=form)
