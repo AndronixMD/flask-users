@@ -6,45 +6,6 @@
     <div class='columns is-variable is-6'>
       {% include "partials/_menu.html" %}
       <section class='column'>
-        {# <div class='columns is-multiline'>
-          {% for user in users %}
-            <div class='column is-4'>
-              <div class='box'>
-                {% if user.admin_id is not none %}
-                  <p>
-                    Роль - Админ
-                  </p>
-                  <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Email -{{ user.email }}
-                  </p>
-                {% elif user.teacher_id is not none %}
-                  <p>
-                    Роль - Учитель
-                  </p>
-                    <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Email -{{ user.email }}
-                  </p>
-                {% elif user.student_id is not none %}
-                  <p>
-                    Роль - Студент
-                  </p>
-                    <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Адрес - {{ user.address }}
-                  </p>
-                {% endif %}
-              </div>
-            </div>
-          {% endfor %}
-        </div> #}
       </section>
     </div>
   </main>

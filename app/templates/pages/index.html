@@ -13,6 +13,8 @@
                 {% if user.admin_id is not none %}
                   <p>
                     Роль - Админ
+                    <br/>
+                    Админ - {{ user.parent_admin.name }}
                   </p>
                   <p>
                     Имя - {{ user.name }}
@@ -23,8 +25,10 @@
                 {% elif user.teacher_id is not none %}
                   <p>
                     Роль - Учитель
+                    <br/>
+                    Админ - {{ user.admin.name }}
                   </p>
-                    <p>
+                  <p>
                     Имя - {{ user.name }}
                   </p>
                   <p>
@@ -33,6 +37,8 @@
                 {% elif user.student_id is not none %}
                   <p>
                     Роль - Студент
+                    <br/>
+                    Учитель - {{ user.teacher.name }}
                   </p>
                     <p>
                     Имя - {{ user.name }}

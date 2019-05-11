@@ -1,4 +1,20 @@
 <aside class='menu column is-3'>
+  <p class='field'>
+    <p class='control'>
+      {% if current_user.admin_id is not none %}
+        Роль - админ
+      {% elif current_user.teacher_id is not none %}
+        Роль - учитель
+        {{ current_user.admin.name }}
+      {% endif %}
+    </p>
+    <p class='control'>
+      Имя - {{ current_user.name }}
+    </p>
+    <p class='control'>
+      Email - {{ current_user.email }}
+    </p>
+  </p>
   <p class='menu-label'>
     Меню
   </p>
