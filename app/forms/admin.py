@@ -6,10 +6,9 @@ from app.models.user import User
 
 class AdminForm(FlaskForm):
     name = StringField(
-        'Email',
+        'Имя',
         validators=[
-            DataRequired(message='Обязательное поле!'),
-            Email(message='Неправильный Email адрес!')
+            DataRequired(message='Обязательное поле!')
         ])
     email = StringField(
         'Email',
@@ -18,6 +17,7 @@ class AdminForm(FlaskForm):
             Email(message='Неправильный Email адрес!')
         ])
     type_user = SelectField(
+        'Тип пользователя',
         choices=[('admin', 'Админ'), ('teacher', 'Учитель')],
         validators=[
             DataRequired('Обязательное поле!')

@@ -5,7 +5,64 @@
   <main class='container'>
     <div class='columns is-variable is-6'>
       {% include "partials/_menu.html" %}
-      <section class='column'>
+      <section class='column is-half'>
+        <h2 class='title is-4 has-text-centered'>Создание - {{ 'Админа или учителя' if current_user.parent_admin is not none else 'Ученика' }}</h2>
+        <form action='' method='post' novalidate>
+          {{ form.hidden_tag() }}
+
+          <div class='field'>
+            {{ form.name.label(class='label') }}
+            <p class='control has-icons-left'>
+              {{ form.name(size='64', class='input', placeholder='Имя') }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+            {% if current_user.parent_admin is not none %}
+              {{ form.type_user.label(class='label') }}
+              <div class='control'>
+                <div class='select is-fullwidth'>
+                  {{ form.type_user() }}
+                </div>
+              </div>
+              {{ form.email.label(class='label') }}
+              <p class='control has-icons-left'>
+                {{ form.email(size='120', class='input', placeholder='Email') }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </p>
+              {{ form.password.label(class='label') }}
+              <p class='control has-icons-left'>
+                {{ form.password(size='128', class='input', placeholder='Пароль') }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+              </p>
+              {{ form.password2.label(class='label') }}
+              <p class='control has-icons-left'>
+                {{ form.password2(size='128', class='input', placeholder='Повторить пароль') }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+              </p>
+            {% elif current_user.admin is not none %}
+              {{ form.age.label(class='label') }}
+              <p class='control'>
+                {{ form.age(min='0', max='120', class='input', placeholder='Возраст') }}
+              </p>
+              {{ form.address.label(class='label') }}
+              <p class='control'>
+                {{ form.address(class='input', placeholder='Адрес') }}
+              </p>
+            {% endif %}
+          </div>
+          <div class='field'>
+            <p class='control buttons is-centered'>
+              {{ form.submit(class='button is-primary') }}
+            </p>
+          </div>
+        </form>
       </section>
     </div>
   </main>
