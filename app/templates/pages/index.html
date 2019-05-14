@@ -10,45 +10,56 @@
           {% for user in users %}
             <div class='column is-4'>
               <div class='box'>
-                {% if user.admin_id is not none %}
-                  <p>
-                    Роль - Админ
-                    <br/>
-                    Админ - {{ user.parent_admin.name }}
-                  </p>
-                  <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Email -{{ user.email }}
-                  </p>
-                {% elif user.teacher_id is not none %}
-                  <p>
-                    Роль - Учитель
-                    <br/>
-                    Админ - {{ user.admin.name }}
-                  </p>
-                  <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Email -{{ user.email }}
-                  </p>
-                {% elif user.student_id is not none %}
-                  <p>
-                    Роль - Студент
-                    <br/>
-                    Учитель - {{ user.teacher.name }}
-                  </p>
+                <div class='field'>
+                  {% if user.admin_id is not none %}
                     <p>
-                    Имя - {{ user.name }}
-                  </p>
-                  <p>
-                    Адрес - {{ user.address }}
-                  </p>
-                  <p>
-                    Возраст - {{ user.age }}
-                  </p>
+                      Роль - Админ
+                      <br/>
+                      Админ - {{ user.parent_admin.name }}
+                    </p>
+                    <p>
+                      Имя - {{ user.name }}
+                    </p>
+                    <p>
+                      Email -{{ user.email }}
+                    </p>
+                  {% elif user.teacher_id is not none %}
+                    <p>
+                      Роль - Учитель
+                      <br/>
+                      Админ - {{ user.admin.name }}
+                    </p>
+                    <p>
+                      Имя - {{ user.name }}
+                    </p>
+                    <p>
+                      Email -{{ user.email }}
+                    </p>
+                  {% elif user.student_id is not none %}
+                    <p>
+                      Роль - Студент
+                      <br/>
+                      Учитель - {{ user.teacher.name }}
+                    </p>
+                      <p>
+                      Имя - {{ user.name }}
+                    </p>
+                    <p>
+                      Адрес - {{ user.address }}
+                    </p>
+                    <p>
+                      Возраст - {{ user.age }}
+                    </p>
+                  {% endif %}
+                </div>
+                {% if (current_user.parent_admin is not none and user.student_id is none) or current_user.admin is not none %}
+                <div class='field'>
+                  <div class='control'>
+                    <button class='button is-danger' data-userid='{{ user.id }}'>
+                      Удалить
+                    </button>
+                  </div>
+                </div>
                 {% endif %}
               </div>
             </div>
@@ -57,4 +68,19 @@
       </section>
     </div>
   </main>
+  <div class='modal'>
+    <div class='modal-background'></div>
+    <div class='modal-content'>
+      <div class='box'>
+       <div class='subtitle has-text-centered'>
+        Вы действительно хотите удалить этого пользователя?
+       </div>
+       <div class='buttons is-centered'>
+        <button class='button is-primary confirm'>Ок</button>
+        <button class='button is-primary cancel'>Отмена</button>
+       </div>
+      </div>
+    </div>
+    <button class="modal-close is-large cancel" aria-label="close"></button>
+  </div>
 {% endblock %}
