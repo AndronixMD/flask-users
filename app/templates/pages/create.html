@@ -18,13 +18,23 @@
                 <i class="fas fa-user"></i>
               </span>
             </p>
-            {% if current_user.parent_admin is not none %}
+            {% for e in form.name.errors %}
+              <p class='help is-danger'>{{ e }}</p>
+            {% endfor %}
+          </div>
+          {% if current_user.parent_admin is not none %}
+            <div class='field'>
               {{ form.type_user.label(class='label') }}
               <div class='control'>
                 <div class='select is-fullwidth'>
                   {{ form.type_user() }}
                 </div>
               </div>
+              {% for e in form.type_user.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+            <div class='field'>
               {{ form.email.label(class='label') }}
               <p class='control has-icons-left'>
                 {{ form.email(size='120', class='input', placeholder='Email') }}
@@ -32,6 +42,11 @@
                   <i class="fas fa-envelope"></i>
                 </span>
               </p>
+              {% for e in form.email.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+            <div class='field'>
               {{ form.password.label(class='label') }}
               <p class='control has-icons-left'>
                 {{ form.password(size='128', class='input', placeholder='Пароль') }}
@@ -39,6 +54,11 @@
                   <i class="fas fa-key"></i>
                 </span>
               </p>
+              {% for e in form.password.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+            <div class='field'>
               {{ form.password2.label(class='label') }}
               <p class='control has-icons-left'>
                 {{ form.password2(size='128', class='input', placeholder='Повторить пароль') }}
@@ -46,17 +66,30 @@
                   <i class="fas fa-key"></i>
                 </span>
               </p>
-            {% elif current_user.admin is not none %}
+              {% for e in form.password2.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+          {% elif current_user.admin is not none %}
+            <div class='field'>
               {{ form.age.label(class='label') }}
               <p class='control'>
                 {{ form.age(min='0', max='120', class='input', placeholder='Возраст') }}
               </p>
+              {% for e in form.age.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+            <div class='field'>
               {{ form.address.label(class='label') }}
               <p class='control'>
                 {{ form.address(class='input', placeholder='Адрес') }}
               </p>
-            {% endif %}
-          </div>
+              {% for e in form.address.errors %}
+                <p class='help is-danger'>{{ e }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
           <div class='field'>
             <p class='control buttons is-centered'>
               {{ form.submit(class='button is-primary') }}

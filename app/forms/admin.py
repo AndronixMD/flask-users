@@ -31,7 +31,7 @@ class AdminForm(FlaskForm):
         'Повторить пароль',
         validators=[
             DataRequired(message='Обязательное поле!'),
-            EqualTo('password')
+            EqualTo('password', message='Пароли должны совпадать!')
         ])
     submit = SubmitField('Создать')
 
