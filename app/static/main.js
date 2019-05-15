@@ -1,7 +1,7 @@
 var buttonsDelete = document.querySelectorAll('.button.is-danger');
 var modal = document.querySelector('.modal');
 
-if (buttonsDelete) {
+if (buttonsDelete.length > 0) {
   var buttonsClose = modal.querySelectorAll('.cancel');
   var buttonConfirm = modal.querySelector('.confirm');
   var userId = null;
@@ -25,6 +25,5 @@ if (buttonsDelete) {
         method: 'DELETE'
       })
       .then(() => window.location = '/');
-    // window.location = '/';
   });
 }
