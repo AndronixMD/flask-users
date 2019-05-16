@@ -2,12 +2,15 @@ from app import app, db
 from app.models import User
 
 if __name__ == "__main__":
-    u = User.query.first()
+    user = User.query.first()
 
-    if u is None:
+    if user is None:
         user = User(name='Admin', email='admin@admin.com')
         user.set_password('admin123')
-        db.session.add(u)
+        db.session.add(user)
+        db.session.commit()
+
+        user.admin_id = user.id
         db.session.commit()
 
     app.run(debug=True)
